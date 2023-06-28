@@ -1,4 +1,4 @@
-﻿module Domain.Functions
+﻿namespace Domain.Functions
 
 open System
 open Domain.Models

@@ -1,4 +1,4 @@
-﻿module Domain.Models
+﻿namespace Domain.Models
 
 open System
 open System.Runtime.CompilerServices

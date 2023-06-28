@@ -1,22 +1,20 @@
 ﻿namespace App;
 
-using Microsoft.FSharp.Core;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using static Domain.Models;
-using static Domain.Functions;
 
 [MemoryDiagnoser]
 public class Benchmarks
 {
+    private static readonly CompositionRoot CompositionRoot = new ();
+    
     [Benchmark]
-    public AuthorWithBooks PureDi() => 
-        CompositionRoot.Resolve<FSharpFunc<int, AuthorWithBooks>>("Domain.AuthorApi.getAuthorWithBooksById")
-            .Invoke(0);
+    public AuthorWithBooks PureDi() =>
+        CompositionRoot.getAuthorWithBooksById.Invoke(0);
 
     [Benchmark(Baseline = true)]
     public AuthorWithBooks Functions() => 
-        AuthorApi.getAuthorWithBooksById(0);
+        Domain.Functions.AuthorApi.getAuthorWithBooksById(0);
 }
 
 public class Program

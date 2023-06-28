@@ -1,4 +1,4 @@
-﻿module Domain.PartialApplication
+﻿namespace Domain.PartialApplication
 
 open System
 open Domain.Models
